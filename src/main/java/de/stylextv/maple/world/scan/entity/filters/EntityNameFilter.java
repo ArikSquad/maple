@@ -18,7 +18,7 @@ public class EntityNameFilter extends EntityFilter {
 		
 		if(text == null) return false;
 		
-		String s = text.asString();
+		String s = text.getLiteralString();
 		
 		return s.equals(name);
 	}

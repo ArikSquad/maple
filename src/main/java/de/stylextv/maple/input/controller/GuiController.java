@@ -16,9 +16,7 @@ public class GuiController {
 		if(slot == -1) return;
 		
 		if(slot < 9) {
-			
 			selectSlot(slot);
-			
 			return;
 		}
 		
@@ -28,7 +26,7 @@ public class GuiController {
 	public static void selectSlot(int slot) {
 		PlayerInventory inv = PlayerContext.inventory();
 		
-		inv.selectedSlot = slot;
+		inv.setSelectedSlot(slot);
 	}
 	
 	public static void moveToHotbar(int slot) {
@@ -49,9 +47,7 @@ public class GuiController {
 		PlayerInventory inv = PlayerContext.inventory();
 		
 		for(int i = 0; i < 36; i++) {
-			
 			ItemStack other = inv.getStack(i);
-			
 			boolean equal = ItemStack.areEqual(stack, other);
 			
 			if(equal) return i;

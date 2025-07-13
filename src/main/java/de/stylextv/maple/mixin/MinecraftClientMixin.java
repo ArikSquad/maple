@@ -1,5 +1,6 @@
 package de.stylextv.maple.mixin;
 
+import net.minecraft.client.gui.screen.DownloadingTerrainScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -21,8 +22,8 @@ public class MinecraftClientMixin {
 		EventBus.onEvent(new TickEvent(TickEvent.Type.CLIENT));
 	}
 	
-	@Inject(method = "joinWorld(Lnet/minecraft/client/world/ClientWorld;)V", at = @At("TAIL"))
-	private void joinWorld(ClientWorld world, CallbackInfo info) {
+	@Inject(method = "joinWorld", at = @At("TAIL"))
+	private void joinWorld(ClientWorld world, DownloadingTerrainScreen.WorldEntryReason worldEntryReason, CallbackInfo ci) {
 		EventBus.onEvent(new WorldEvent(WorldEvent.Type.LOAD, world));
 	}
 	

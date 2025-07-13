@@ -14,7 +14,7 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.c2s.play.PlayerActionC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerActionC2SPacket.Action;
 import net.minecraft.util.collection.DefaultedList;
@@ -30,7 +30,7 @@ public class PlayerListener implements EventListener {
 		
 		PlayerInventory inv = PlayerContext.inventory();
 		
-		if(list.equals(inv.main)) ToolSet.updateTools();
+		if(list.equals(inv.getMainStacks())) ToolSet.updateTools();
 	}
 	
 	@Override

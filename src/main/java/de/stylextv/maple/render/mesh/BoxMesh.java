@@ -3,7 +3,7 @@ package de.stylextv.maple.render.mesh;
 import java.util.HashMap;
 
 import de.stylextv.maple.util.world.CoordUtil;
-import net.minecraft.util.math.Vec3f;
+import org.joml.Vector3f;
 
 public class BoxMesh extends Mesh {
 	
@@ -21,7 +21,7 @@ public class BoxMesh extends Mesh {
 	
 	@Override
 	public void create() {
-		Vec3f[][][] map = new Vec3f[2][2][2];
+		Vector3f[][][] map = new Vector3f[2][2][2];
 		
 		for(int i = 0; i < 2; i++) {
 			for(int j = 0; j < 2; j++) {
@@ -31,12 +31,12 @@ public class BoxMesh extends Mesh {
 					float y = height * j;
 					float z = length * k;
 					
-					map[i][j][k] = new Vec3f(x, y, z);
+					map[i][j][k] = new Vector3f(x, y, z);
 				}
 			}
 		}
-		
-		Vec3f[] vertices = new Vec3f[24];
+
+		Vector3f[] vertices = new Vector3f[24];
 		
 		int index = 0;
 		

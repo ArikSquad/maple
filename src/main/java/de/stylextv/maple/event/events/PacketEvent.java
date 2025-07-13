@@ -2,7 +2,7 @@ package de.stylextv.maple.event.events;
 
 import de.stylextv.maple.event.Event;
 import de.stylextv.maple.event.EventListener;
-import net.minecraft.network.Packet;
+import net.minecraft.network.packet.Packet;
 
 public class PacketEvent extends Event {
 	

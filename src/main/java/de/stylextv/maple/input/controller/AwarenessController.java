@@ -63,7 +63,7 @@ public class AwarenessController {
 		
 		if(isFallingBlock(up)) return true;
 		
-		Box box = new Box(pos, up);
+		Box box = new Box(pos.toCenterPos(), pos.toCenterPos());
 		
 		box = box.stretch(1, 1, 1);
 		

@@ -5,15 +5,16 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [],
   "client": [
+    "ChatScreenMixin",
+    "ClientConnectionMixin",
+    "DefaultedListMixin",
+    "GameRendererMixin",
+    "LivingEntityMixin",
+    "MinecraftClientInvoker",
     "MinecraftClientMixin",
-	"MinecraftClientInvoker",
-	"GameRendererMixin",
-	"WorldRendererMixin",
-	"NetworkHandlerMixin",
-	"ClientConnectionMixin",
-	"DefaultedListMixin",
-	"ScreenMixin",
-	"LivingEntityMixin"
+    "NetworkHandlerMixin",
+    "RenderTickCounterDynamicAccessor",
+    "WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

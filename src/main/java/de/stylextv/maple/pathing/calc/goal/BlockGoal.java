@@ -35,12 +35,18 @@ public class BlockGoal extends Goal {
 		
 		return x == pos.getX() && y == pos.getY() && z == pos.getZ();
 	}
-	
+
 	@Override
 	public void render(RenderWorldEvent event) {
 		BlockPos up = pos.up();
-		
-		ShapeRenderer.drawBox(event, pos, up, Colors.GOAL, 2);
+		ShapeRenderer.drawBox(
+				event.getMatrixStack(),
+				event.getVertexConsumerProvider(),
+				pos,
+				up,
+				Colors.GOAL,
+				2
+		);
 	}
 	
 	@Override

@@ -92,7 +92,7 @@ public class Offset {
 		this.blockY = CoordUtil.unitToBlockPos(y);
 		this.blockZ = CoordUtil.unitToBlockPos(z);
 		
-		this.dir = Direction.fromVector(blockX, blockY, blockZ);
+		this.dir = Direction.fromVector(blockX, blockY, blockZ, /*fallback*/Direction.UP);
 	}
 	
 	public Offset add(Offset o) {

@@ -6,10 +6,7 @@ import net.minecraft.client.network.ClientPlayerInteractionManager;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.*;
 
 public class PlayerContext {
 	
@@ -48,9 +45,10 @@ public class PlayerContext {
 		
 		return v.add(0, eyeHeight, 0);
 	}
-	
+
 	public static BlockPos feetPosition() {
-		return new BlockPos(position().add(0, 0.5f, 0));
+		Vec3d pos = position();
+		return new BlockPos((int) pos.x, (int) pos.y, (int) pos.z);
 	}
 	
 	public static ChunkPos chunkPosition() {
@@ -114,7 +112,7 @@ public class PlayerContext {
 	public static float reachDistance() {
 		ClientPlayerInteractionManager manager = GameContext.interactionManager();
 		
-		return manager.getReachDistance();
+		return 3.0f;
 	}
 	
 	public static HitResult crosshairTarget() {

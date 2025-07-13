@@ -42,8 +42,15 @@ public class TwoBlocksGoal extends Goal {
 	public void render(RenderWorldEvent event) {
 		BlockPos up = pos.up();
 		BlockPos down = pos.down();
-		
-		ShapeRenderer.drawBox(event, up, down, Colors.GOAL, 2);
+
+		ShapeRenderer.drawBox(
+				event.getMatrixStack(),
+				event.getVertexConsumerProvider(),
+				up,
+				down,
+				Colors.GOAL,
+				2
+		);
 	}
 	
 	@Override

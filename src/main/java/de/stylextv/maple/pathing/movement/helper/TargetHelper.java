@@ -51,11 +51,15 @@ public abstract class TargetHelper<T extends BlockTarget> extends MovementHelper
 	public abstract void collectBlock(int x, int y, int z);
 	
 	public void render(RenderWorldEvent event, Color color) {
-		for(BlockTarget target : targets) {
-			
+		for (BlockTarget target : targets) {
 			BlockPos pos = target.getPos();
-			
-			ShapeRenderer.drawBox(event, pos, color, 2);
+			ShapeRenderer.drawBox(
+					event.getMatrixStack(),
+					event.getVertexConsumerProvider(),
+					pos,
+					color,
+					2
+			);
 		}
 	}
 	

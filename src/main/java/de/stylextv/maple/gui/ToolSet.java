@@ -111,7 +111,7 @@ public class ToolSet {
 	public static void updateTools() {
 		PlayerInventory inv = PlayerContext.inventory();
 		
-		DefaultedList<ItemStack> list = inv.main;
+		DefaultedList<ItemStack> list = inv.getMainStacks();
 		
 		int l = 36;
 		

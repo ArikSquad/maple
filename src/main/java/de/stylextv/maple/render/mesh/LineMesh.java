@@ -3,15 +3,15 @@ package de.stylextv.maple.render.mesh;
 import java.util.HashMap;
 
 import de.stylextv.maple.util.world.CoordUtil;
-import net.minecraft.util.math.Vec3f;
+import org.joml.Vector3f;
 
 public class LineMesh extends Mesh {
 	
 	private static final HashMap<Long, LineMesh> MESH_CACHE = new HashMap<>();
 	
-	private float dx;
-	private float dy;
-	private float dz;
+	private final float dx;
+	private final float dy;
+	private final float dz;
 	
 	public LineMesh(float dx, float dy, float dz) {
 		this.dx = dx;
@@ -21,10 +21,10 @@ public class LineMesh extends Mesh {
 	
 	@Override
 	public void create() {
-		Vec3f[] vertices = new Vec3f[2];
+		Vector3f[] vertices = new Vector3f[2];
 		
-		vertices[0] = Vec3f.ZERO;
-		vertices[1] = new Vec3f(dx, dy, dz);
+		vertices[0] = new Vector3f(0.0f, 0.0f, 0.0f);
+		vertices[1] = new Vector3f(dx, dy, dz);
 		
 		setVertices(vertices);
 	}

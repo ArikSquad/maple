@@ -6,8 +6,8 @@ import java.util.List;
 import de.stylextv.maple.util.TextUtil;
 import net.minecraft.text.ClickEvent;
 import net.minecraft.text.HoverEvent;
-import net.minecraft.text.LiteralText;
 import net.minecraft.text.MutableText;
+import net.minecraft.text.Text;
 
 public class Message {
 	
@@ -48,7 +48,7 @@ public class Message {
 			String s = list.remove(0);
 			
 			if(!s.startsWith(EVENT_INDICATOR)) {
-				texts.add(new LiteralText(s));
+				texts.add(Text.literal(s));
 				
 				continue;
 			}
@@ -69,28 +69,28 @@ public class Message {
 			
 			if(!s.isEmpty()) list.add(0, s);
 			
-			MutableText text = new LiteralText(visible);
+			MutableText text = Text.literal(visible);
 			
 			if(hover != null) {
 				
-				LiteralText t = new LiteralText(hover);
+				Text t = Text.literal(hover);
 				
 				text.styled((style) -> {
-					return style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, t));
+					return style.withHoverEvent(new HoverEvent.ShowText(t));
 				});
 			}
 			
 			if(command != null) {
 				
 				text.styled((style) -> {
-					return style.withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, command));
+					return style.withClickEvent(new ClickEvent.RunCommand(command));
 				});
 			}
 			
 			texts.add(text);
 		}
 		
-		MutableText text = new LiteralText("");
+		MutableText text = Text.literal("");
 		
 		for(MutableText t : texts) {
 			text = text.append(t);

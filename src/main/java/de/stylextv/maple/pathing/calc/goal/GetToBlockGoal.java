@@ -37,10 +37,16 @@ public class GetToBlockGoal extends Goal {
 		
 		return dis < 2;
 	}
-	
+
 	@Override
 	public void render(RenderWorldEvent event) {
-		ShapeRenderer.drawBox(event, pos, Colors.GOAL, 2);
+		ShapeRenderer.drawBox(
+				event.getMatrixStack(),
+				event.getVertexConsumerProvider(),
+				pos,
+				Colors.GOAL,
+				2
+		);
 	}
 	
 	@Override

@@ -3,6 +3,7 @@ package de.stylextv.maple.context;
 import java.io.File;
 
 import de.stylextv.maple.mixin.MinecraftClientInvoker;
+import de.stylextv.maple.mixin.RenderTickCounterDynamicAccessor;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.hud.ChatHud;
@@ -50,11 +51,15 @@ public class GameContext {
 	}
 	
 	public static float tickDelta() {
-		return CLIENT.getTickDelta();
+		return CLIENT.getRenderTickCounter().getFixedDeltaTicks(); // todo: check if this is correct
 	}
-	
+
 	public static float lastFrameDuration() {
-		return CLIENT.getLastFrameDuration() * 50;
+		RenderTickCounterDynamicAccessor rtc =
+				(RenderTickCounterDynamicAccessor) CLIENT.getRenderTickCounter();
+		long lastTime = rtc.getLastTimeMillis();
+		// calculate how much time has passed since the last tick, then scale by 0.05f (1/20)
+		return (System.currentTimeMillis() - lastTime) * 0.05f;
 	}
 	
 	public static Vec3d cameraPosition() {

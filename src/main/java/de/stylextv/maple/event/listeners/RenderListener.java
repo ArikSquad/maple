@@ -17,7 +17,8 @@ import de.stylextv.maple.scheme.Colors;
 import de.stylextv.maple.waypoint.Waypoint;
 import de.stylextv.maple.waypoint.Waypoints;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.Vec3d;
+import org.joml.Vector3f;
 
 public class RenderListener implements EventListener {
 	
@@ -85,10 +86,19 @@ public class RenderListener implements EventListener {
 		float y = pos.getY() + 1.4f;
 		float z = pos.getZ() + 0.5f;
 		
-		Vec3f v1 = new Vec3f(x, pos.getY(), z);
-		Vec3f v2 = new Vec3f(x, BEAM_HEIGHT, z);
-		
-		ShapeRenderer.drawLine(event, v1, v2, Colors.WAYPOINT, 2);
+		Vector3f v1 = new Vector3f(x, pos.getY(), z);
+		Vector3f v2 = new Vector3f(x, BEAM_HEIGHT, z);
+
+		Vec3d start = new Vec3d(v1.x(), v1.y(), v1.z());
+		Vec3d end = new Vec3d(v2.x(), v2.y(), v2.z());
+
+		ShapeRenderer.drawLine(
+				event.getMatrixStack(),
+				event.getVertexConsumerProvider(),
+				start,
+				end,
+				Colors.WAYPOINT
+		);
 		
 		String s = "§f" + p.getName();
 		

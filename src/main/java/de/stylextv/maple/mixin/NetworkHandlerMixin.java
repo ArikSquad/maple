@@ -19,8 +19,8 @@ public class NetworkHandlerMixin {
 	
 	@Inject(method = "onChunkData(Lnet/minecraft/network/packet/s2c/play/ChunkDataS2CPacket;)V", at = @At("TAIL"))
 	private void onChunkData(ChunkDataS2CPacket packet, CallbackInfo info) {
-		int x = packet.getX();
-		int z = packet.getZ();
+		int x = packet.getChunkX();
+		int z = packet.getChunkZ();
 		
 		EventBus.onEvent(new ChunkEvent(ChunkEvent.Type.DATA, x, z));
 	}

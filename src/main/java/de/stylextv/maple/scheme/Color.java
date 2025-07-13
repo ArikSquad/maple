@@ -1,6 +1,6 @@
 package de.stylextv.maple.scheme;
 
-import net.minecraft.util.math.Vector4f;
+import org.joml.Vector4f;
 
 public class Color {
 	

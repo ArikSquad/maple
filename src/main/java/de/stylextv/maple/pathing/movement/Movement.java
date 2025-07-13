@@ -106,10 +106,16 @@ public abstract class Movement {
 	public void tick(double dt) {
 		timeSinceStart += dt;
 	}
-	
+
 	public void render(RenderWorldEvent event, Color color) {
-		ShapeRenderer.drawNodeConnection(event, destination, color, 2);
-		
+		ShapeRenderer.drawNodeConnection(
+				event.getMatrixStack(),
+				event.getVertexConsumerProvider(),
+				destination,
+				color,
+				2
+		);
+
 		breakHelper.render(event, color);
 		placeHelper.render(event, color);
 	}
@@ -167,8 +173,8 @@ public abstract class Movement {
 		int dirZ = getDirectionZ();
 		
 		if(isVertical() && !isVerticalOnly()) dirY = 0;
-		
-		return Direction.fromVector(dirX, dirY, dirZ);
+
+		return Direction.fromVector(dirX, dirY, dirZ, /* fallback */ Direction.UP);
 	}
 	
 	public int getDirectionX() {

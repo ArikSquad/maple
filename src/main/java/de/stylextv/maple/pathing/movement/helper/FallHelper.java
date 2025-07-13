@@ -90,7 +90,7 @@ public class FallHelper extends MovementHelper<FallMovement> {
 	private static boolean canPlaceWater() {
 		DimensionType dimension = WorldContext.dimension();
 		
-		return !dimension.isUltrawarm();
+		return !dimension.ultrawarm();
 	}
 	
 }

@@ -10,9 +10,9 @@ import net.minecraft.client.render.BufferBuilderStorage;
 import net.minecraft.client.render.VertexConsumerProvider.Immediate;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.math.Matrix4f;
-import net.minecraft.util.math.Quaternion;
 import net.minecraft.util.math.Vec3d;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
 
 public class NameTagRenderer {
 	
@@ -34,8 +34,8 @@ public class NameTagRenderer {
 		stack.push();
 		
 		stack.translate(renderX, renderY, renderZ);
-		
-		Quaternion orientation = dispatcher.getRotation();
+
+		Quaternionf orientation = dispatcher.getRotation();
 		
 		BufferBuilderStorage builders = client.getBufferBuilders();
 		
@@ -56,11 +56,11 @@ public class NameTagRenderer {
 		
 		int rgb = (int) (f * 255) << 24;
 		
-		TEXT_RENDERER.draw(s, offX, offY, 0, false, matrix, consumers, false, rgb, 255);
+		TEXT_RENDERER.draw(s, offX, offY, 0, false, matrix, consumers, TextRenderer.TextLayerType.NORMAL, rgb, 255);
 		
 		stack.pop();
 		
-		RenderSystem.enableDepthTest();
+		// RenderSystem.enableDepthTest();
 	}
 	
 }
